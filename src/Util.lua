@@ -17,32 +17,17 @@ function GenerateQuads(atlas, tilewidth, tileheight)
     return spritesheet
 end
 
-function GenerateBeams(atlas)
-    local x = 0
-    local y = 0
+function GenerateHeroes(atlas)
+    local x = 16
+    local y = 48
 
     local counter = 1
     local quads = {}
 
     for j = 0, 5 do
-        quads[counter] = love.graphics.newQuad(x, y, 16, 48, atlas:getDimensions())
+        quads[counter] = love.graphics.newQuad(x, y, 16, 16, atlas:getDimensions())
         x = x + 16
         counter = counter + 1
-    end
-
-    for j = 0, 3 do 
-        for i = 0, 2 do 
-            if i == 2 then
-                quads[counter] = love.graphics.newQuad(x, y, 8, 16, atlas:getDimensions())
-                counter = counter + 1
-                x = 96
-                y = y + 16
-            else
-                quads[counter] = love.graphics.newQuad(x, y, 16, 16, atlas:getDimensions())
-                x = x + 16 
-                counter = counter + 1
-            end
-        end
     end
 
     return quads
