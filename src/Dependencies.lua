@@ -21,7 +21,13 @@ require 'src/states/StateStack'
 require 'src/states/game/StartState'
 require 'src/states/game/PlayState'
 
--- require 'src/world/Level'
+require 'src/states/player/PlayerIdleState'
+require 'src/states/player/PlayerWalkState'
+
+require 'src/entity/Player'
+
+require 'src/world/Level'
+require 'src/world/LevelData'
 -- require 'src/world/tile_ids'
 -- require 'src/world/Tile'
 -- require 'src/world/TileMap'

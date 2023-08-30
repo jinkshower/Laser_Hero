@@ -1,16 +1,20 @@
 PlayState = Class {__includes = BaseState}
 
-function PlayState:init()
-    tutorialMap = Sti('graphics/firstMap.lua')
+function PlayState:init(def)
+    self.level = def.level
+    self.map = Level(self.level)
+end
+
+function PlayState:enter()
+
 end
 
 function PlayState:update(dt)
-    
+    self.map:update(dt)
 end
 
 function PlayState:render()
-    tutorialMap:draw()
-    love.graphics.draw(gTextures['heroes'], gFrames['heroes'][1], 16, 48)
+    self.map:render()
 end
 
 -- left and right entity render 

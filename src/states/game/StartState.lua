@@ -15,7 +15,7 @@ function StartState:update(dt)
         -- if player press play
         if highlighted == 1 then
             gStateStack:pop()
-            gStateStack:push(PlayState())
+            gStateStack:push(PlayState({level = 1}))
         -- if player press quit
         else
             love.event.quit()
