@@ -9,29 +9,22 @@ function PlayerWalkState:enter()
 end
 
 function PlayerWalkState:move()
-    local toX, toY = self.player.mapX, self.player.mapY
+    self.xVel, self.yVel = 0, 0
 
     if self.player.direction == 'left' then
-        toX = toX - 1
+        self.xVel = -PLAYER_SPEED
     elseif self.player.direction == 'right' then
-        toX = toX + 1
+        self.xVel = PLAYER_SPEED
     elseif self.player.direction == 'up' then
-        toY = toY - 1
-    else
-        toY = toY + 1
+        self.yVel = -PLAYER_SPEED
+    elseif self.player.direction == 'down' then
+        self.yVel = PLAYER_SPEED
     end
 
-    if toX < 1 or toX > 22 or toY < 1 or toY > 6 then
-        self.player:changeState('idle')
-        return
-    end 
+    self.player.physics.body:setLinearVelocity(self.xVel, self.yVel)
 
-    self.player.mapY = toY
-    self.player.mapX = toX
-
-    Timer.tween(0.2, {
-        [self.player] = {x = toX * TILE_SIZE, y = toY * TILE_SIZE - self.player.height / 2}
-    }):finish(function()
+    Timer.after(0.1, 
+    function()
         if love.keyboard.isDown('left') then
             self.player.direction = 'left'
             self.player:changeState('walk')

@@ -5,7 +5,7 @@ function PlayerIdleState:init(player)
 end
 
 function PlayerIdleState:enter()
-    
+    self.player.physics.body:setLinearVelocity(0, 0)
 end
 
 function PlayerIdleState:update(dt)
