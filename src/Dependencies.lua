@@ -23,14 +23,18 @@ require 'src/states/game/PlayState'
 
 require 'src/states/player/PlayerIdleState'
 require 'src/states/player/PlayerWalkState'
+require 'src/states/player/PlayerBlockPlaceState'
+require 'src/states/player/PlayerLaserShootState'
+
 
 require 'src/entity/Player'
+require 'src/entity/Laser'
 
 require 'src/world/Level'
 require 'src/world/LevelData'
--- require 'src/world/tile_ids'
--- require 'src/world/Tile'
--- require 'src/world/TileMap'
+require 'src/world/gameobject_def'
+require 'src/world/GameObject'
+
 
 
 gFonts = {
@@ -40,9 +44,13 @@ gFonts = {
 }
 
 gTextures = {
-    ['heroes'] = love.graphics.newImage('graphics/heroes.png')
+    ['heroes'] = love.graphics.newImage('graphics/heroes.png'),
+    ['blocks'] = love.graphics.newImage('graphics/blocks.png'),
+    ['lasers'] = love.graphics.newImage('graphics/laser.png')
 }
 
 gFrames = {
-    ['heroes'] = GenerateHeroes(gTextures['heroes'])
+    ['heroes'] = GenerateHeroes(gTextures['heroes']),
+    ['blocks'] = GenerateQuads(gTextures['blocks'], 16, 16),
+    ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8)
 }

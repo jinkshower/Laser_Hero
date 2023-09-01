@@ -41,5 +41,6 @@ function PlayerWalkState:move()
             self.player:changeState('idle')
         end
     end)
-
 end
+
+-- function 

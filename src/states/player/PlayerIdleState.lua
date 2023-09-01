@@ -22,4 +22,13 @@ function PlayerIdleState:update(dt)
         self.player.direction = 'down'
         self.player:changeState('walk')
     end
+
+    if love.keyboard.wasPressed('x') then
+        self.player:changeState('block-place')
+    end
+
+    if love.keyboard.wasPressed('v') then
+        self.player:changeState('laser-shoot')
+    end
+
 end
