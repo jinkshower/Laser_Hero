@@ -60,11 +60,6 @@ function Level:render()
     for k, enemy in pairs(self.map.enemies) do
         enemy:render()
     end
-
-    -- debug code
-    -- love.graphics.setColor(1, 0, 1, 1)
-    -- love.graphics.rectangle('line', self.entity.x, self.entity.y, self.entity.width, self.entity.height)
-    -- love.graphics.setColor(1, 1, 1, 1)
 end
 
 function Level:spawnEnemies(level)

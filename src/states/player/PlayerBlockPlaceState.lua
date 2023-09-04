@@ -5,18 +5,19 @@ function PlayerBlockPlaceState:init(player, map)
     self.map = map
 end
 
-function PlayerBlockPlaceState:enter()
+function PlayerBlockPlaceState:enter(params)
     -- instance block
-    local count = 0
-    for k, object in pairs(self.map.objects)do 
-        if object.type == 'block' then
-            count = count + 1
-        end
-    end
+    -- local count = 0
+    -- for k, object in pairs(self.map.objects)do 
+    --     if object.type == 'block' then
+    --         count = count + 1
+    --     end
+    -- end
 
-    if count < 100 then
-        self:placeBlock()
-    end
+    -- if count < 100 then
+    self.direction = params.direction
+        self:placeBlock(self.direction)
+    -- end
 end
 
 function PlayerBlockPlaceState:update(dt)
@@ -25,9 +26,9 @@ function PlayerBlockPlaceState:update(dt)
     -- end
 end
 
-function PlayerBlockPlaceState:placeBlock()
+function PlayerBlockPlaceState:placeBlock(direction)
     local block = GameObject(
-        GAME_OBJECT_DEFS['block'],
+        GAME_OBJECT_DEFS[direction ..'-block'],
         self.player.x - self.player.width / 2,
         self.player.y + TILE_SIZE * 6
     )
