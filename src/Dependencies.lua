@@ -16,11 +16,17 @@ require 'src/StateMachine'
 require 'src/Util'
 require 'src/Hitbox'
 
+require 'src/gui/Menu'
+require 'src/gui/Panel'
+require 'src/gui/Selection'
+
+
 require 'src/states/BaseState'
 require 'src/states/StateStack'
 
 require 'src/states/game/StartState'
 require 'src/states/game/PlayState'
+require 'src/states/game/BlockChooseState'
 
 require 'src/states/player/PlayerIdleState'
 require 'src/states/player/PlayerWalkState'
@@ -50,12 +56,14 @@ gTextures = {
     ['heroes'] = love.graphics.newImage('graphics/heroes.png'),
     ['blocks'] = love.graphics.newImage('graphics/blocks.png'),
     ['lasers'] = love.graphics.newImage('graphics/laser.png'),
-    ['enemy'] = love.graphics.newImage('graphics/enemy.png')
+    ['enemy'] = love.graphics.newImage('graphics/enemy.png'),
+    ['fourwayblocks'] = love.graphics.newImage('graphics/4wayblocks.png')
 }
 
 gFrames = {
     ['heroes'] = GenerateHeroes(gTextures['heroes']),
     ['blocks'] = GenerateQuads(gTextures['blocks'], 16, 16),
     ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8),
-    ['enemy'] = GenerateQuads(gTextures['enemy'], 16, 16)
+    ['enemy'] = GenerateQuads(gTextures['enemy'], 16, 16),
+    ['fourwayblocks'] = GenerateQuads(gTextures['fourwayblocks'], 16, 16)
 }

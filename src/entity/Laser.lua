@@ -34,16 +34,11 @@ function Laser:update(dt)
     self:wallCollision()
 
     self:enemyCollision()
-
+    
 end
 
 function Laser:render()
     love.graphics.draw(gTextures['blocks'], gFrames['blocks'][1], self.x, self.y, 0, 0.5, 0.5)
-
-    -- debug laser
-    love.graphics.setColor(1,0,1,1)
-    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
-    love.graphics.setColor(1,1,1,1)
 end
 
 function Laser:collide(target)
@@ -96,46 +91,126 @@ function Laser:wallCollision()
     end
 end
 
-function Laser:blockCollision()
-    for k, object in pairs(self.map.objects) do 
-        if self:collide(object) then
-            if self.direction == 'right' then
-                self.dx = 0
-                self.dy = 0 
-                self.x = object.x - 10
-
-                self.dx = -LASER_SPEED
-                
-            elseif self.direction == 'left' then
-                self.dx = 0
-                self.dy = 0
-                self.x = object.x + object.width + 1
-
-                self.dx = LASER_SPEED
-
-            elseif self.direction == 'up' then
-                self.dx = 0
-                self.dy = 0
-                self.y = object.y + object.height + 1
-
-                self.dy = LASER_SPEED
-
-            elseif self.direction == 'down' then
-                self.dx = 0
-                self.dy = 0
-                self.y = object.y - 8
-
-                self.dy = -LASER_SPEED
-            end
-        end
-    end
-end
-
 function Laser:enemyCollision()
     for k, enemy in pairs(self.map.enemies) do
         if self:collide(enemy.enemyHitbox) then
             enemy:changeAnimation('damage')
             enemy.alive = false
+        end
+    end
+end
+
+-- function Laser:blockCollision()
+--     for k, object in pairs(self.map.objects) do 
+--         if self:collide(object) then
+--             if self.direction == 'right' then
+--                 self.dx = 0
+--                 self.dy = 0 
+--                 self.x = object.x - 10
+
+--                 self.dx = -LASER_SPEED
+                
+--             elseif self.direction == 'left' then
+--                 self.dx = 0
+--                 self.dy = 0
+--                 self.x = object.x + object.width + 1
+
+--                 self.dx = LASER_SPEED
+
+--             elseif self.direction == 'up' then
+--                 self.dx = 0
+--                 self.dy = 0
+--                 self.y = object.y + object.height + 1
+
+--                 self.dy = LASER_SPEED
+
+--             elseif self.direction == 'down' then
+--                 self.dx = 0
+--                 self.dy = 0
+--                 self.y = object.y - 8
+
+--                 self.dy = -LASER_SPEED
+--             end
+--         end
+--     end
+-- end
+
+function Laser:blockCollision()
+    for k, object in pairs(self.map.objects) do 
+        if self:collide(object) then
+            if self.direction == 'right' then
+                if object.type == 'right-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x - 10 
+                    self.dx = -LASER_SPEED
+                elseif object.type == 'left-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x - 10 
+                    self.dx = -LASER_SPEED
+                elseif object.type == 'up-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x - 10 
+                    self.dy = -LASER_SPEED
+                elseif object.type == 'down-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x - 10 
+                    self.dy = LASER_SPEED
+                end
+            elseif self.direction == 'left' then
+                if object.type == 'right-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x + object.width + 1
+                    self.dx = LASER_SPEED
+                elseif object.type == 'left-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x + object.width + 1
+                    self.dx = LASER_SPEED
+                elseif object.type == 'up-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x + object.width + 1
+                    self.dy = -LASER_SPEED
+                elseif object.type == 'down-block' then
+                    self.dx, self.dy = 0, 0
+                    self.x = object.x + object.width + 1
+                    self.dy = LASER_SPEED
+                end
+            elseif self.direction == 'up' then
+                if object.type == 'right-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y + object.height + 1
+                    self.dx = LASER_SPEED
+                elseif object.type == 'left-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y + object.height + 1
+                    self.dx = -LASER_SPEED
+                elseif object.type == 'up-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y + object.height + 1
+                    self.dy = LASER_SPEED
+                elseif object.type == 'down-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y + object.height + 1
+                    self.dy = LASER_SPEED
+                end
+            elseif self.direction == 'down' then
+                if object.type == 'right-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y - 10
+                    self.dx = LASER_SPEED
+                elseif object.type == 'left-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y - 10
+                    self.dx = -LASER_SPEED
+                elseif object.type == 'up-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y - 10
+                    self.dy = -LASER_SPEED
+                elseif object.type == 'down-block' then
+                    self.dx, self.dy = 0, 0
+                    self.y = object.y - 10
+                    self.dy = -LASER_SPEED
+                end
+            end
         end
     end
 end
