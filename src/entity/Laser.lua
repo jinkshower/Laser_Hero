@@ -33,10 +33,17 @@ function Laser:update(dt)
 
     self:wallCollision()
 
+    self:enemyCollision()
+
 end
 
 function Laser:render()
     love.graphics.draw(gTextures['blocks'], gFrames['blocks'][1], self.x, self.y, 0, 0.5, 0.5)
+
+    -- debug laser
+    love.graphics.setColor(1,0,1,1)
+    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    love.graphics.setColor(1,1,1,1)
 end
 
 function Laser:collide(target)
@@ -120,6 +127,15 @@ function Laser:blockCollision()
 
                 self.dy = -LASER_SPEED
             end
+        end
+    end
+end
+
+function Laser:enemyCollision()
+    for k, enemy in pairs(self.map.enemies) do
+        if self:collide(enemy.enemyHitbox) then
+            enemy:changeAnimation('damage')
+            enemy.alive = false
         end
     end
 end

@@ -40,6 +40,10 @@ function Level:update(dt)
     for k, object in pairs(self.map.lasers) do
         object:update(dt)
     end
+
+    for k, enemy in pairs(self.map.enemies) do
+        enemy:update(dt)
+    end
 end
 
 function Level:render()
@@ -49,11 +53,29 @@ function Level:render()
         object:render()
     end
 
-    for k, object in pairs(self.map.lasers) do
-        object:render()
+    for k, laser in pairs(self.map.lasers) do
+        laser:render()
     end
+
+    for k, enemy in pairs(self.map.enemies) do
+        enemy:render()
+    end
+
+    -- debug code
+    -- love.graphics.setColor(1, 0, 1, 1)
+    -- love.graphics.rectangle('line', self.entity.x, self.entity.y, self.entity.width, self.entity.height)
+    -- love.graphics.setColor(1, 1, 1, 1)
 end
 
 function Level:spawnEnemies(level)
-    
+    self.enemy = LevelData[tostring(level)].enemy
+
+    for i = 1, #self.enemy.x do 
+        local enemy = Enemy {
+            animations = ENEMY_DEFS['enemy'].animations,
+            x = self.enemy.x[i],
+            y = self.enemy.y[i]
+        }
+        table.insert(self.map.enemies, enemy)
+    end
 end
