@@ -23,6 +23,11 @@ end
 function GameObject:render()
     love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.states[self.state].frame or self.frame],
         self.x, self.y)
+
+    -- debug
+    love.graphics.setColor(1,0,1,1)
+    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    love.graphics.setColor(1,1,1,1)
 end
 
 function GameObject:overlapCheck(map, x, y)

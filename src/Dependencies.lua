@@ -14,6 +14,7 @@ require 'src/Animation'
 require 'src/constants'
 require 'src/StateMachine'
 require 'src/Util'
+require 'src/Hitbox'
 
 require 'src/states/BaseState'
 require 'src/states/StateStack'
@@ -29,6 +30,8 @@ require 'src/states/player/PlayerLaserShootState'
 
 require 'src/entity/Player'
 require 'src/entity/Laser'
+require 'src/entity/enemy_def'
+require 'src/entity/Enemy'
 
 require 'src/world/Level'
 require 'src/world/LevelData'
@@ -46,11 +49,13 @@ gFonts = {
 gTextures = {
     ['heroes'] = love.graphics.newImage('graphics/heroes.png'),
     ['blocks'] = love.graphics.newImage('graphics/blocks.png'),
-    ['lasers'] = love.graphics.newImage('graphics/laser.png')
+    ['lasers'] = love.graphics.newImage('graphics/laser.png'),
+    ['enemy'] = love.graphics.newImage('graphics/enemy.png')
 }
 
 gFrames = {
     ['heroes'] = GenerateHeroes(gTextures['heroes']),
     ['blocks'] = GenerateQuads(gTextures['blocks'], 16, 16),
-    ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8)
+    ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8),
+    ['enemy'] = GenerateQuads(gTextures['enemy'], 16, 16)
 }
