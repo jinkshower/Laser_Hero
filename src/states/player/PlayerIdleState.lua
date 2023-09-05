@@ -25,7 +25,9 @@ function PlayerIdleState:update(dt)
 
     if love.keyboard.wasPressed('x') then
         -- self.player:changeState('block-place')
-        gStateStack:push(BlockChooseState(self.player))
+        if self.player.canPlace then
+            gStateStack:push(BlockChooseState(self.player))
+        end
     end
 
     if love.keyboard.wasPressed('v') then

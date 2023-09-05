@@ -52,7 +52,7 @@ function Enemy:render()
     self.x, self.y )
 
     -- debug
-    love.graphics.setColor(1,0,1,1)
-    love.graphics.rectangle('line', self.enemyHitbox.x, self.enemyHitbox.y, self.enemyHitbox.width, self.enemyHitbox.height)
-    love.graphics.setColor(1,1,1,1)
+    -- love.graphics.setColor(1,0,1,1)
+    -- love.graphics.rectangle('line', self.enemyHitbox.x, self.enemyHitbox.y, self.enemyHitbox.width, self.enemyHitbox.height)
+    -- love.graphics.setColor(1,1,1,1)
 end

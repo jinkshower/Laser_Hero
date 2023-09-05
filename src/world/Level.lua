@@ -19,7 +19,8 @@ function Level:init(level)
         mapY = 3,
         width = 16,
         height = 16,
-        world = self.world
+        world = self.world,
+        canPlace = true
     }
 
     self.player.stateMachine = StateMachine{
@@ -37,12 +38,17 @@ function Level:update(dt)
     self.player:update(dt)
     self.world:update(dt)
 
-    for k, object in pairs(self.map.lasers) do
-        object:update(dt)
+    for k, laser in pairs(self.map.lasers) do
+        laser:update(dt)
     end
 
     for k, enemy in pairs(self.map.enemies) do
         enemy:update(dt)
+    end
+    self:victoryCheck()
+
+    if #self.map.lasers > 0 or #self.map.objects > 2 then
+        self.player.canPlace = false
     end
 end
 
@@ -71,5 +77,35 @@ function Level:spawnEnemies(level)
             y = self.enemy.y[i]
         }
         table.insert(self.map.enemies, enemy)
+    end
+end
+
+function Level:victoryCheck()
+    -- victory check
+    local count = 0
+    for k, enemy in pairs(self.map.enemies) do
+        if enemy.alive == false then
+            count = count + 1
+        end
+    end
+
+    if count == #self.map.enemies then
+        gStateStack:pop()
+        gStateStack:push(FadeInState({r = 0, g = 0, b = 0}, 1, 
+        function() 
+            gStateStack:push(VictoryState(self.level,
+                function()
+                    gStateStack:push(FadeOutState({r = 0, b = 0, g= 0}, 1, 
+                    function()
+                        if self.level < 2 then 
+                            gStateStack:push(PlayState({level = self.level + 1}))
+                        else
+                            gStateStack:push(StartState())
+                        end
+                    end
+                ))
+                end
+            ))
+        end))
     end
 end

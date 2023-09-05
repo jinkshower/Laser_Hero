@@ -7,7 +7,9 @@ end
 
 function PlayerLaserShootState:enter()
     -- instance laser
-    self:shootLaser()
+    if #self.map.lasers == 0 then
+        self:shootLaser()
+    end
 end
 
 function PlayerLaserShootState:update(dt)
