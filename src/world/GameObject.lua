@@ -19,7 +19,6 @@ function GameObject:init(def, x, y)
 
     self.onCollide = function() end
 end
-
 function GameObject:render()
     love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.states[self.state].frame or self.frame],
         self.x, self.y)

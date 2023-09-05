@@ -52,7 +52,6 @@ function Level:render()
     for k, object in pairs(self.map.objects) do
         object:render()
     end
-
     for k, laser in pairs(self.map.lasers) do
         laser:render()
     end
