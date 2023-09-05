@@ -7,17 +7,10 @@ end
 
 function PlayerBlockPlaceState:enter(params)
     -- instance block
-    -- local count = 0
-    -- for k, object in pairs(self.map.objects)do 
-    --     if object.type == 'block' then
-    --         count = count + 1
-    --     end
-    -- end
-
-    -- if count < 100 then
-    self.direction = params.direction
+    if #self.map.objects < 3 then
+        self.direction = params.direction
         self:placeBlock(self.direction)
-    -- end
+    end
 end
 
 function PlayerBlockPlaceState:update(dt)

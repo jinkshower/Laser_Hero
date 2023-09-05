@@ -3,6 +3,7 @@ Player = Class{}
 function Player:init(def)
     self.mapX = def.mapX
     self.mapY = def.mapY
+    self.canPlace = def.canPlace
     self.direction = 'down'
 
     self.width = def.width
@@ -43,5 +44,5 @@ function Player:syncPhysics()
 end
 
 function Player:render()
-    love.graphics.draw(gTextures['heroes'], gFrames['heroes'][1], self.x - self.height / 2, self.y - self.height / 2)
+    love.graphics.draw(gTextures['blocks'], gFrames['blocks'][1], self.x - self.height / 2, self.y - self.height / 2)
 end

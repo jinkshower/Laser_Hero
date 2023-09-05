@@ -42,5 +42,3 @@ function PlayerWalkState:move()
         end
     end)
 end
-
--- function 
