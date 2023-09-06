@@ -15,8 +15,8 @@ function Level:init(level)
     self:spawnEnemies(self.level)
 
     self.player = Player{
-        mapX = 10,
-        mapY = 3,
+        mapX = 2,
+        mapY = 2,
         width = 16,
         height = 16,
         world = self.world,
@@ -90,6 +90,7 @@ function Level:victoryCheck()
     end
 
     if count == #self.map.enemies then
+        INSTRUCTION_VISIBILITY = false
         gStateStack:pop()
         gStateStack:push(FadeInState({r = 0, g = 0, b = 0}, 1, 
         function() 
@@ -97,7 +98,7 @@ function Level:victoryCheck()
                 function()
                     gStateStack:push(FadeOutState({r = 0, b = 0, g= 0}, 1, 
                     function()
-                        if self.level < 2 then 
+                        if self.level < 3 then 
                             gStateStack:push(PlayState({level = self.level + 1}))
                         else
                             gStateStack:push(StartState())

@@ -24,13 +24,12 @@ function PlayerIdleState:update(dt)
     end
 
     if love.keyboard.wasPressed('x') then
-        -- self.player:changeState('block-place')
         if self.player.canPlace then
             gStateStack:push(BlockChooseState(self.player))
         end
     end
 
-    if love.keyboard.wasPressed('v') then
+    if love.keyboard.wasPressed('c') then
         self.player:changeState('laser-shoot')
     end
 

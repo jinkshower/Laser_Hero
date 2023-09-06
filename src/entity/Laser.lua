@@ -49,6 +49,8 @@ end
 function Laser:wallCollision()
     -- left 
     if self.x <= LEFT_WALL then
+        gSounds['wall-hit']:stop()
+        gSounds['wall-hit']:play()
         if self.y < UPPER_WALL + TILE_SIZE * 3 then
             self.x = LEFT_WALL + 1
             self.dx = 0
@@ -59,6 +61,8 @@ function Laser:wallCollision()
             self.dy = -LASER_SPEED
         end
     elseif self.x >= RIGHT_WALL then
+        gSounds['wall-hit']:stop()
+        gSounds['wall-hit']:play()
         if self.y < UPPER_WALL + TILE_SIZE * 3 then
             self.x = RIGHT_WALL - 1
             self.dx = 0
@@ -69,6 +73,8 @@ function Laser:wallCollision()
             self.dy = -LASER_SPEED
         end
     elseif self.y <= UPPER_WALL then
+        gSounds['wall-hit']:stop()
+        gSounds['wall-hit']:play()
         if self.x < TILE_SIZE * 12 then
             self.y = UPPER_WALL + 1
             self.dy = 0
@@ -79,6 +85,8 @@ function Laser:wallCollision()
             self.dx = -LASER_SPEED
         end
     elseif self.y >= LOWER_WALL then
+        gSounds['wall-hit']:stop()
+        gSounds['wall-hit']:play()
         if self.x < TILE_SIZE * 12 then
             self.y = LOWER_WALL - 1
             self.dy = 0
@@ -93,7 +101,9 @@ end
 
 function Laser:enemyCollision()
     for k, enemy in pairs(self.map.enemies) do
-        if self:collide(enemy.enemyHitbox) then
+        if self:collide(enemy.enemyHitbox) and enemy.alive then
+            gSounds['enemy-hit']:stop()
+            gSounds['enemy-hit']:play()
             enemy:changeAnimation('damage')
             enemy.alive = false
         end
@@ -138,6 +148,8 @@ end
 function Laser:blockCollision()
     for k, object in pairs(self.map.objects) do 
         if self:collide(object) then
+            gSounds['block-hit']:stop()
+            gSounds['block-hit']:play()
             if self.direction == 'right' then
                 if object.type == 'right-block' then
                     self.dx, self.dy = 0, 0

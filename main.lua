@@ -17,6 +17,9 @@ function love.load()
 
     -- keyboard input array initailization
     love.keyboard.keysPressed = {}
+
+    gSounds['background-music']:play()
+    gSounds['background-music']:setLooping(true)
 end
 
 

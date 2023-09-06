@@ -26,7 +26,7 @@ function Selection:update(dt)
         else
             self.currentSelection = self.currentSelection - 1
         end
-    elseif love.keyboard.wasPressed('return') or love.keyboard.wasPressed('enter') then
+    elseif love.keyboard.wasPressed('x')then
         self.items[self.currentSelection].onSelect()
     end
 end

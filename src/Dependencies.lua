@@ -30,6 +30,7 @@ require 'src/states/game/BlockChooseState'
 require 'src/states/game/FadeInState'
 require 'src/states/game/FadeOutState'
 require 'src/states/game/VictoryState'
+require 'src/states/game/InstructionState'
 
 require 'src/states/player/PlayerIdleState'
 require 'src/states/player/PlayerWalkState'
@@ -69,4 +70,11 @@ gFrames = {
     ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8),
     ['enemy'] = GenerateQuads(gTextures['enemy'], 16, 16),
     ['fourwayblocks'] = GenerateQuads(gTextures['fourwayblocks'], 16, 16)
+}
+
+gSounds = {
+    ['background-music'] = love.audio.newSource('sounds/through_space.ogg', 'static'),
+    ['block-hit'] = love.audio.newSource('sounds/Hit_Hurt.wav', 'static'),
+    ['wall-hit'] = love.audio.newSource('sounds/Hit_Hurt7.wav', 'static'),
+    ['enemy-hit'] = love.audio.newSource('sounds/Powerup2.wav', 'static')
 }

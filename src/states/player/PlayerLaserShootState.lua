@@ -13,13 +13,11 @@ function PlayerLaserShootState:enter()
 end
 
 function PlayerLaserShootState:update(dt)
-    -- if love.keyboard.wasPressed('p') then
-        self.player:changeState('idle')
-    -- end
+
+    self.player:changeState('idle')
 end
 
 function PlayerLaserShootState:shootLaser()
     local laser = Laser(self.map)
     table.insert(self.map.lasers, laser)
-
 end

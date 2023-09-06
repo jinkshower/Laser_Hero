@@ -10,7 +10,7 @@ end
 
 function PlayState:update(dt)
     self.map:update(dt)
-    if love.keyboard.wasPressed('a') then
+    if love.keyboard.wasPressed('z') then
         gStateStack:pop()
         gStateStack:push(PlayState({level = self.level}))
     end
