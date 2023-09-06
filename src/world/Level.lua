@@ -3,6 +3,8 @@ Level = Class{}
 function Level:init(level)
     self.level = level
     self.map = LevelData[tostring(self.level)].map
+    self.blockMax = LevelData[tostring(self.level)].blockMax
+    self.levelMax = getSize(LevelData)
 
     self.world = love.physics.newWorld(0, 0)
     self.map:box2d_init(self.world)
@@ -47,7 +49,7 @@ function Level:update(dt)
     end
     self:victoryCheck()
 
-    if #self.map.lasers > 0 or #self.map.objects > 2 then
+    if #self.map.lasers > 0 or #self.map.objects >= self.blockMax then
         self.player.canPlace = false
     end
 end
@@ -55,13 +57,16 @@ end
 function Level:render()
     self.map:draw()
     self.player:render()
+    if #self.map.objects ~= self.blockMax then
+        love.graphics.setFont(gFonts['small'])
+        love.graphics.print("blocks: "..tostring(self.blockMax - #self.map.objects), TILE_SIZE, TILE_SIZE * 7)
+    end
     for k, object in pairs(self.map.objects) do
         object:render()
     end
     for k, laser in pairs(self.map.lasers) do
         laser:render()
     end
-
     for k, enemy in pairs(self.map.enemies) do
         enemy:render()
     end
@@ -98,7 +103,7 @@ function Level:victoryCheck()
                 function()
                     gStateStack:push(FadeOutState({r = 0, b = 0, g= 0}, 1, 
                     function()
-                        if self.level < 3 then 
+                        if self.level < self.levelMax then 
                             gStateStack:push(PlayState({level = self.level + 1}))
                         else
                             gStateStack:push(StartState())

@@ -32,3 +32,12 @@ function GenerateHeroes(atlas)
 
     return quads
 end
+
+function getSize(tbl)
+    local count = 0
+    for k, key in pairs(tbl) do
+        count = count + 1
+    end
+
+    return count
+end
