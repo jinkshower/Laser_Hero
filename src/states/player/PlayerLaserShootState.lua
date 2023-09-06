@@ -7,6 +7,8 @@ end
 
 function PlayerLaserShootState:enter()
     -- instance laser
+    gSounds['shoot']:stop()
+    gSounds['shoot']:play()
     if #self.map.lasers == 0 then
         self:shootLaser()
     end

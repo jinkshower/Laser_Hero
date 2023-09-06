@@ -15,18 +15,24 @@ end
 
 function Selection:update(dt)
     if love.keyboard.wasPressed('right') then
+        gSounds['blip']:stop()
+        gSounds['blip']:play()
         if self.currentSelection == #self.items then
             self.currentSelection = 1
         else
             self.currentSelection = self.currentSelection + 1
         end
     elseif love.keyboard.wasPressed('left') then
+        gSounds['blip']:stop()
+        gSounds['blip']:play()
         if self.currentSelection == 1 then
             self.currentSelection = #self.items
         else
             self.currentSelection = self.currentSelection - 1
         end
     elseif love.keyboard.wasPressed('x')then
+        gSounds['blip']:stop()
+        gSounds['blip']:play()
         self.items[self.currentSelection].onSelect()
     end
 end

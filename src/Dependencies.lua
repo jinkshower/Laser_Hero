@@ -76,5 +76,7 @@ gSounds = {
     ['background-music'] = love.audio.newSource('sounds/through_space.ogg', 'static'),
     ['block-hit'] = love.audio.newSource('sounds/Hit_Hurt.wav', 'static'),
     ['wall-hit'] = love.audio.newSource('sounds/Hit_Hurt7.wav', 'static'),
-    ['enemy-hit'] = love.audio.newSource('sounds/Powerup2.wav', 'static')
+    ['enemy-hit'] = love.audio.newSource('sounds/Powerup2.wav', 'static'),
+    ['blip'] = love.audio.newSource('sounds/Blip.wav','static'),
+    ['shoot'] = love.audio.newSource('sounds/Laser_Shoot.wav','static')
 }
