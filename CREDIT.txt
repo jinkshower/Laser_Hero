@@ -1,0 +1,20 @@
+--[[
+    Credits
+]]
+
+-- ART
+
+enemy by GrafxKid
+https://opengameart.org/content/platformer-baddies
+
+map_tiles by ansimuz
+https://opengameart.org/content/grotto-escape-ii-environment
+
+object, shoot block by Richy Mackro
+https://opengameart.org/content/game-boy-platformer-tileset-character
+
+
+-- SOUND
+
+Sound effects by maxstack
+https://opengameart.org/content/through-space
