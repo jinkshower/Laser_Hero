@@ -58,7 +58,6 @@ gFonts = {
 gTextures = {
     ['heroes'] = love.graphics.newImage('graphics/heroes.png'),
     ['blocks'] = love.graphics.newImage('graphics/blocks.png'),
-    ['lasers'] = love.graphics.newImage('graphics/laser.png'),
     ['enemy'] = love.graphics.newImage('graphics/enemy.png'),
     ['fourwayblocks'] = love.graphics.newImage('graphics/4wayblocks.png')
 }
@@ -66,7 +65,6 @@ gTextures = {
 gFrames = {
     ['heroes'] = GenerateHeroes(gTextures['heroes']),
     ['blocks'] = GenerateQuads(gTextures['blocks'], 16, 16),
-    ['lasers'] = GenerateQuads(gTextures['lasers'], 5, 8),
     ['enemy'] = GenerateQuads(gTextures['enemy'], 16, 16),
     ['fourwayblocks'] = GenerateQuads(gTextures['fourwayblocks'], 16, 16)
 }
