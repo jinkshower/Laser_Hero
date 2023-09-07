@@ -15,7 +15,8 @@ function StartState:update(dt)
         -- if player press play
         if highlighted == 1 then
             gStateStack:pop()
-            gStateStack:push(PlayState())
+            gStateStack:push(InstructionState())
+            gStateStack:push(PlayState({level = 1}))
         -- if player press quit
         else
             love.event.quit()
@@ -26,7 +27,7 @@ end
 function StartState:render()
     -- title
     love.graphics.setFont(gFonts['large'])
-    love.graphics.printf("Laser Hero", 0, VIRTUAL_HEIGHT / 3, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf("Block Hero", 0, VIRTUAL_HEIGHT / 3, VIRTUAL_WIDTH, 'center')
 
     -- menu
     love.graphics.setFont(gFonts['medium'])

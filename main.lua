@@ -1,7 +1,7 @@
 require 'src/Dependencies'
 
 function love.load() 
-    love.window.setTitle("LaserHero")
+    love.window.setTitle("BlockHero")
     love.graphics.setDefaultFilter('nearest', 'nearest')
     math.randomseed(os.time())
 
@@ -17,6 +17,9 @@ function love.load()
 
     -- keyboard input array initailization
     love.keyboard.keysPressed = {}
+
+    gSounds['background-music']:play()
+    gSounds['background-music']:setLooping(true)
 end
 
 
