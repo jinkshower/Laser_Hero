@@ -47,6 +47,7 @@ function Level:update(dt)
     for k, enemy in pairs(self.map.enemies) do
         enemy:update(dt)
     end
+
     self:victoryCheck()
 
     if #self.map.lasers > 0 or #self.map.objects >= self.blockMax then

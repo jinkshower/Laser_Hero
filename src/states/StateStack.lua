@@ -1,11 +1,3 @@
---[[
-    GD50
-    -- State Stack --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 StateStack = Class{}
 
 function StateStack:init()

@@ -1,12 +1,3 @@
---[[
-    GD50
-
-    -- Animation Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 Animation = Class{}
 
 function Animation:init(def)

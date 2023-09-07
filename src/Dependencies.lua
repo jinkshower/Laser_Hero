@@ -7,7 +7,6 @@ Event = require 'lib/knife.event'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 Sti = require 'lib/sti'
-Wf = require 'lib/windfield'
 
 
 require 'src/Animation'
