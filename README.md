@@ -1,9 +1,6 @@
 # Block Hero
 2D Puzzle game by Hyun Tae Im, implemented in lua using love2d framework.
 
-## CS50's Project: Final
-Create a full game from scratch using either LÖVE or Unity.
-
 ## Distinctiveness and Complexity
 This project is a 2D puzzle game implemented in lua using love2d framework. Three main parts - Start of the game, six levels to solve and victory state- make up the game.  The main goal of the game is by shooting a block, touching (defeating) all the alien enemies. 
 
